@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+<title>Watch-a-Long</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+.img-container {
+    float: left;
+    width: 39.36%;
+    padding: 0;
+    margin-left: 145px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background: linear-gradient(to bottom, #000066 0%, #cc00cc 100%);
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+/* Style the footer */
+#footer {
+background: url(../mainupdate/images/bg-footer2.png) repeat-x bottom left;
+margin: 0;
+padding: 73px 0 42px;
+}
+#footer > div {
+	margin: 0;
+	text-align: center;
+}
+#footer ul {
+	display: block;
+	margin: 0 auto;
+	padding: 0 0 65px;
+	overflow: hidden;
+	width: 351px;
+}
+#footer ul li {
+	display: block;
+	float: left;
+	list-style: none;
+	margin: 0 22px;
+	padding: 0;
+    }
+</style>
+</head>
+<body background="../mainupdate/images/pslive.jpg">
+<header>
+    <h2>Prostistation Live Watch-a-Longs</h2>
+</header>
+<div class="clearfix">
+    <div class="img-container">
+        <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+        <div id="<player div ID>" align="center"></div>
+        <script type="text/javascript">
+          var options = {
+            width: 1280,
+            height: 720,
+            channel: "procrastistationlive",
+            video: "<video ID>",
+            collection: "<collection ID>",
+          };
+          var player = new Twitch.Player("<player div ID>", options);
+          player.setVolume(0.5);
+        </script>
+    </div>
+    <div class="img-container">
+        <iframe frameborder="0"
+                scrolling="yes"
+                id="chat_embed"
+                src="https://www.twitch.tv/embed/procrastistationlive/chat"
+                height="720"
+                width="350"
+                style="float:right">
+        </iframe>
+    </div>
+</div>
+		<div id="footer">
+			<div>
+				<ul>
+					<li id="Home">
+						<a href="https://procrastistation.ddns.net/mainupdate/">Home</a>
+					</li>
+					<li id="Table">
+						<a href="https://procrastistation.ddns.net/tableupdate/">Table</a>
+					</li>
+					<li id="Forum">
+						<a href="https://procrastistation.ddns.net/Forum/">Forum</a>
+					</li>
+				</ul>
+				<p>
+					ProcrastiStation for procrastination
+				</p>
+			</div>
+		</div>
+</body>
+</html>

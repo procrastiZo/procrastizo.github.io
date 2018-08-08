@@ -14,17 +14,17 @@ $to      = $data['Email'];
 $mail = new PHPMailer;
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+$mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'rob4700@gmail.com';                 // SMTP username
-$mail->Password = 'rob12345';                           // SMTP password
-$mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
-$mail->Port = 465;
+$mail->Username = 'procrastistation@hotmail.com';                 // SMTP username
+$mail->Password = '1006863656theone';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+$mail->Port = 587;
 
-$mail->From = 'rob4700@gmail.com';
-$mail->FromName = 'Robert Floyd';
+$mail->From = 'procrastistation@hotmail.com';
+$mail->FromName = 'Procrastistation';
 $mail->addAddress("$to");               // Name is optional
-$mail->addReplyTo('rob4700@gmail.com', 'Robert Floyd');
+$mail->addReplyTo('procrastistation@hotmail.com', 'Procrastistation');
 
 $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 $mail->isHTML(true);                                  // Set email format to HTML
@@ -39,8 +39,14 @@ if(!$mail->send()) {
 } else {
 $fh = fopen(__DIR__ . '/content/user.json', 'r+'); //opens the row.json file for reading and writing (dir is the current directory, so you dont have to say C:/ bla bal)
 $stat = fstat($fh); //read the information about the file, you can use the ['size'] index to read how many characters the file has
-ftruncate($fh, $stat['size']-1); // this shortens (or truncates) the file by 1 character (deleting closing bracket ']')
-fclose($fh); //closes the file we just opened
+// load the data and delete the line from the array 
+$lines = file(__DIR__ . '/content/user.json'); 
+$last = sizeof($lines) - 1 ; 
+unset($lines[$last]); 
+// write the new data to the file 
+$fp = fopen(__DIR__ . '/content/user.json', 'w'); 
+fwrite($fp, implode('', $lines)); 
+fclose($fp);
 if($stat['size']< 5) {	// if the file is less than 5 characters (4 characters make the two brackets and newline) then the file has now rows
 file_put_contents(__DIR__ . '/content/user.json', "$input \n]" , FILE_APPEND);} //if no rows then save the new row (without comma) and close the bracket back with newline '\n]'
 else { // if there are other rows then
